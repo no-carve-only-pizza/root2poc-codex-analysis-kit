@@ -1,0 +1,12 @@
+target_id: "[TARGET_ID]"
+product: "[PRODUCT]"
+build: "[BUILD]"
+architecture: "[ARCHITECTURE]"
+modules:
+  - path: "[LOCAL_MODULE_PATH]"
+    sha256: "[SHA256]"
+input_modes:
+  - format: "[FORMAT]"
+    delivery_route: "[AUTHORITATIVE_ROUTE]"
+controls: []
+notes: ""

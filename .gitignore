@@ -1,0 +1,30 @@
+# The Git repository is an allowlisted, target-independent core. Everything at
+# the root is private/local unless it is explicitly re-included below.
+/*
+
+!/.gitignore
+!/README.md
+!/AGENTS.md
+
+!/.agents/
+!/.agents/**
+
+!/.codex/
+!/.codex/hooks.json
+
+!/research/
+/research/*
+!/research/tools/
+/research/tools/*
+!/research/tools/closed_source_context/
+!/research/tools/closed_source_context/**
+!/research/tools/repository_preflight.py
+!/research/templates/
+!/research/templates/**
+
+# Generated state and caches remain local even below allowlisted directories.
+**/.DS_Store
+**/__pycache__/
+**/*.py[cod]
+**/.ruff_cache/
+research/.agent-state/

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://root2poc.local/schemas/closed-source-tool-event.schema.json",
+  "title": "Hook-visible IDA or CDB tool event",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "event_id",
+    "type",
+    "timestamp_utc",
+    "tool_name",
+    "tool_family",
+    "request_summary",
+    "response_summary",
+    "request_capture",
+    "response_capture",
+    "capture_scope",
+    "canonical_evidence"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "event_id": {"type": "string", "minLength": 1},
+    "type": {"const": "tool_result"},
+    "timestamp_utc": {"type": "string"},
+    "tool_name": {"type": "string"},
+    "tool_family": {"enum": ["ida", "cdb"]},
+    "request_summary": {"type": "string"},
+    "response_summary": {"type": "string"},
+    "request_capture": {"$ref": "#/$defs/capture"},
+    "response_capture": {"$ref": "#/$defs/capture"},
+    "capture_scope": {"type": "string"},
+    "canonical_evidence": {"const": false}
+  },
+  "$defs": {
+    "capture": {
+      "type": "object",
+      "required": ["ref", "redacted_sha256", "redacted_size_bytes", "stored_capture_truncated", "capture_scope"],
+      "properties": {
+        "ref": {"type": "string"},
+        "redacted_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "redacted_size_bytes": {"type": "integer", "minimum": 0},
+        "stored_capture_truncated": {"type": "boolean"},
+        "capture_scope": {"const": "hook_visible_only"}
+      }
+    }
+  }
+}

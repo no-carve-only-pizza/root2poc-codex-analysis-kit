@@ -1,0 +1,30 @@
+schema_version: 2
+case_id: ""
+generated_utc: "YYYY-MM-DDTHH:MM:SSZ"
+trigger: "manual"
+capture_scope: "redacted hook-visible derived state; not canonical evidence"
+analysis_active: true
+activation_reason: "captured_ida_or_cdb_tool_event"
+objective: ""
+exact_target: "product / build / architecture / module / input route"
+completion_floor: "RCE_REQUIRED"
+completion_status: "RCE_NOT_PROVEN_IN_DERIVED_STATE"
+current_hypothesis: ""
+work_state: ""
+methodology_notes: []
+cross_function_relationships: []
+runtime_state: []
+claim_boundaries: {}
+confirmed_native_facts: []
+refuted_hypotheses: []
+tentative_or_unknown: []
+checkpoint_ref: ""
+checkpoint_sha256: ""
+last_tool_result_ref: ""
+last_tool_event_id: ""
+recent_tool_event_ids: []
+next_discriminating_test: ""
+evidence_pointers: []
+derived_capture_pointers: []
+source_event_count: 0
+source_event_ids: []

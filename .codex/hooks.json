@@ -1,0 +1,82 @@
+{
+  "description": "Project-local closed-source analysis recovery hooks. Derived state is never canonical evidence.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 research/tools/closed_source_context/hook.py",
+            "timeout": 10,
+            "statusMessage": "Checkpointing the redacted analysis objective"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "^(Bash|mcp__idalib__.*)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 research/tools/closed_source_context/hook.py",
+            "timeout": 15,
+            "statusMessage": "Saving hook-visible IDA/CDB context"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "^(manual|auto)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 research/tools/closed_source_context/hook.py",
+            "timeout": 15,
+            "statusMessage": "Creating the analysis recovery capsule"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "^(manual|auto)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 research/tools/closed_source_context/hook.py",
+            "timeout": 10,
+            "statusMessage": "Auditing context compaction"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "^compact$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 research/tools/closed_source_context/hook.py",
+            "timeout": 10,
+            "additionalContextLimit": 6000,
+            "statusMessage": "Restoring bounded analysis context"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 research/tools/closed_source_context/hook.py",
+            "timeout": 10,
+            "statusMessage": "Saving the turn and checking the RCE completion floor"
+          }
+        ]
+      }
+    ]
+  }
+}

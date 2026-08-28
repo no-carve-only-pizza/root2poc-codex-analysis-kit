@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://root2poc.local/schemas/closed-source-capsule.schema.json",
+  "title": "Paper-adapted closed-source analysis recovery capsule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "generated_utc",
+    "trigger",
+    "capture_scope",
+    "analysis_active",
+    "activation_reason",
+    "objective",
+    "exact_target",
+    "completion_floor",
+    "completion_status",
+    "current_hypothesis",
+    "work_state",
+    "methodology_notes",
+    "cross_function_relationships",
+    "runtime_state",
+    "claim_boundaries",
+    "confirmed_native_facts",
+    "refuted_hypotheses",
+    "tentative_or_unknown",
+    "checkpoint_ref",
+    "checkpoint_sha256",
+    "last_tool_result_ref",
+    "last_tool_event_id",
+    "recent_tool_event_ids",
+    "next_discriminating_test",
+    "evidence_pointers",
+    "derived_capture_pointers",
+    "source_event_count",
+    "source_event_ids"
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "case_id": {"type": "string"},
+    "generated_utc": {"type": "string"},
+    "trigger": {"enum": ["manual", "auto", "test", "unknown"]},
+    "capture_scope": {"type": "string"},
+    "analysis_active": {"type": "boolean"},
+    "activation_reason": {
+      "enum": ["captured_ida_or_cdb_tool_event", "inactive_no_relevant_tool_event"]
+    },
+    "objective": {"type": "string"},
+    "exact_target": {"type": "string"},
+    "completion_floor": {"enum": ["RCE_REQUIRED", "PROMPT_DEFINED"]},
+    "completion_status": {
+      "enum": [
+        "RCE_NOT_PROVEN_IN_DERIVED_STATE",
+        "RCE_CLAIM_REQUIRES_CANONICAL_REVERIFICATION"
+      ]
+    },
+    "current_hypothesis": {"type": "string"},
+    "work_state": {"type": "string"},
+    "methodology_notes": {"type": "array", "items": {"type": "string"}},
+    "cross_function_relationships": {"type": "array", "items": {"type": "string"}},
+    "runtime_state": {"type": "array", "items": {"type": "string"}},
+    "claim_boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reachability": {"type": "string"},
+        "trigger": {"type": "string"},
+        "primitive": {"type": "string"},
+        "file_control": {"type": "string"},
+        "exploitability": {"type": "string"},
+        "rce": {"type": "string"},
+        "novelty": {"type": "string"},
+        "reportability": {"type": "string"}
+      }
+    },
+    "confirmed_native_facts": {"type": "array", "items": {"type": "string"}},
+    "refuted_hypotheses": {"type": "array", "items": {"type": "string"}},
+    "tentative_or_unknown": {"type": "array", "items": {"type": "string"}},
+    "checkpoint_ref": {"type": "string"},
+    "checkpoint_sha256": {"type": "string", "pattern": "^(|[0-9a-f]{64})$"},
+    "last_tool_result_ref": {"type": "string"},
+    "last_tool_event_id": {"type": "string"},
+    "recent_tool_event_ids": {"type": "array", "items": {"type": "string"}, "maxItems": 2},
+    "next_discriminating_test": {"type": "string"},
+    "evidence_pointers": {"type": "array", "items": {"type": "string"}, "maxItems": 8},
+    "derived_capture_pointers": {"type": "array", "items": {"type": "string"}, "maxItems": 8},
+    "source_event_count": {"type": "integer", "minimum": 0},
+    "source_event_ids": {"type": "array", "items": {"type": "string"}, "maxItems": 16}
+  }
+}

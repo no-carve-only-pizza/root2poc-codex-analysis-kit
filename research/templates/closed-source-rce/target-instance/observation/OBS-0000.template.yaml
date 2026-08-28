@@ -1,0 +1,19 @@
+observation_id: OBS-0000
+timestamp_utc: YYYY-MM-DDTHH:MM:SSZ
+exact_target: "product / build / architecture / module"
+question: "one discriminating question"
+action:
+  tool_and_mode: "IDA / NATIVE / MINIMAL_OBSERVER / INSTRUMENTED / MUTATING"
+  input_and_control: "paths and hashes"
+observation:
+  raw_result: "what was directly observed"
+  artifacts: []
+interpretation:
+  supports: []
+  refutes: []
+  remains_unknown: []
+classification:
+  static_or_reachability: ""
+  trigger_or_primitive: ""
+  exploitability: ""
+  reportability: ""

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CDB Native Validation"
+  short_description: "Validate native CDB evidence without path drift"
+  default_prompt: "Use $cdb-native-validation to validate this Windows native candidate with matched controls."
